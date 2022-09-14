@@ -11,7 +11,7 @@ stage('ExecuteSonarQubeReport'){sh "${mavenHome}/bin/mvn clean sonar:sonar"}
 stage('UploadArtifactIntoArtifactsRepo'){sh "${mavenHome}/bin/mvn clean deploy"}
 
 stage('DeployAppIntoTomcatServer'){sshagent(['e92b5790-e123-4008-aadf-546b90a46f70']) {
- sh "scp -o SrtictHostKeyChecking=no target/maven-web-application.war ex2-user@172.31.41.16:/opt/apache-tomcat-9.0.65/webapps/"   
+ sh "scp -o SrtictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.41.16:/opt/apache-tomcat-9.0.65/webapps"   
 }
 }
 }
