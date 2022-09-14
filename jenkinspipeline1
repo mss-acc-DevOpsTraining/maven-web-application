@@ -14,3 +14,4 @@ stage('DeployAppIntoTomcatServer'){sshagent(['e92b5790-e123-4008-aadf-546b90a46f
  sh "scp -o SrtictHostKeyChecking=no target/maven-web-application.war ex2-user@172.31.41.16:/opt/apache-tomcat-9.0.65/webapps/"   
 }
 }
+}
