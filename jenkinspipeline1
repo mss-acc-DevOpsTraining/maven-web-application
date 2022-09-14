@@ -1,7 +1,7 @@
 node{
 def mavenHome = tool name: "maven3.8.6"
 
-stage('CheckOutCode'){git branch: 'developmet', credentialsId: 'e42d1038-7312-46a0-9bf7-0e507b156519', url: 'https://github.com/mss-acc-DevOpsTraining/maven-web-application.git'}
+stage('CheckOutCode'){git branch: 'development', credentialsId: 'e42d1038-7312-46a0-9bf7-0e507b156519', url: 'https://github.com/mss-acc-DevOpsTraining/maven-web-application.git'}
 
 
 stage('Build'){sh "${mavenHome}/bin/mvn clean package"}
