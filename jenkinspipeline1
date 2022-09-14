@@ -1,3 +1,5 @@
+node {
+    try {
         slackNotifications('STARTED')
 
 	def mavenHome = tool name: "maven3.8.6"
@@ -13,6 +15,8 @@
 
 	stage('DeployAppIntoTomcatServer'){sshagent(['e92b5790-e123-4008-aadf-546b90a46f70'])
 	{sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.41.16:/opt/apache-tomcat-9.0.65/webapps"}}
+
+  
 
   } catch (e) {
   
@@ -45,3 +49,7 @@ def slackNotifications(String buildStatus = 'STARTED') {
     color = 'RED'
     colorCode = '#FF0000'
   }
+
+  // Send notifications
+  slackSend (color: colorCode, message: summary)
+}
